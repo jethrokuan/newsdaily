@@ -1,6 +1,6 @@
 Newsdaily::Application.routes.draw do
   get "pages/index"
-  get "pages/hn"
+  get "pages/tech"
   root to: "pages#index"
 
   # The priority is based upon order of creation:

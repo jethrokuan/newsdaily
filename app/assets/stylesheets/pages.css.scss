@@ -3,6 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #posts {
-	height:500px;
+	height:400px;
 	overflow: auto;
+}
+
+#header {
+	position:fixed;
+	top:10px;
+	left: 50px;
+}
+
+#content {
+	// width:10000px;
+	margin-top:150px;
+	margin-left:50px;
 }

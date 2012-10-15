@@ -12,6 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.qtip2.min
 //= require twitter/bootstrap
 //= require_tree .
