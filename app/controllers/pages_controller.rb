@@ -1,7 +1,8 @@
-require 'net/http'
-
 class PagesController < ApplicationController
   def index
-  	@hn = Feed.returnHN(5)
+  end
+
+  def hn
+  	@hn = Feed.returnHN(1)
   end
 end
