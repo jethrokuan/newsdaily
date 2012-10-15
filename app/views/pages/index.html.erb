@@ -1,2 +1,16 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="span6">
+			<h2>Hackernews</h2>
+			<%@hn["items"].each_with_index do |post,index|%>
+			<div class="row-fluid">
+				<div class="span1"><%=index+1%></div>
+				<div class="span11">
+					<h6><%=link_to post["title"], post["url"]%></h6>
+					<p><%=post["postedAgo"]%> - <%=post["postedBy"]%></p>
+				</div>
+			</div>
+			<%end%>	
+		</div>
+	</div>
+</div>
