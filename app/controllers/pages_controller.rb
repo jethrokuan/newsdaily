@@ -2,6 +2,6 @@ require 'net/http'
 
 class PagesController < ApplicationController
   def index
-  	@hn = Feed.getresponse("http://api.ihackernews.com/page")
+  	@hn = Feed.returnHN(5)
   end
 end

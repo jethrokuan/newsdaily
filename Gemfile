@@ -27,6 +27,7 @@ end
 gem 'thin'
 gem 'twitter-bootstrap-rails'
 gem 'faraday'
+gem 'ruby-hackernews'
 
 gem 'jquery-rails'
 
