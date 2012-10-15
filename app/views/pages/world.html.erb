@@ -1,12 +1,12 @@
-<% title "Technology News"%>
+<% title "World News"%>
 <div id="header">
 	<div class="row-fluid">
 		<div class="span1">
 			<h1><a href=<%=root_path%> id="backbutton"><i class="icon-chevron-left"></i></a></h1>
 		</div>
 		<div class="span8">
-			<h1>Tech News</h1>
-			<p class="lead">Consolidating the important tech news around the world.</p>
+			<h1>World News</h1>
+			<p class="lead">Consolidating the important world news around the world.</p>
 		</div>
 		<div class="span3">
 			<h3>&copy Jethro 2012</h3>
@@ -18,22 +18,9 @@
 <div class="container" id="content">
 	<div class="row">
 		<div class="span6">
-			<h2><%=image_tag "ycombinator.gif"%>  Hackernews</h2>
+			<h2><%=image_tag "cnn.jpg"%>  CNN Top Stories</h2>
 			<div id="posts">
-				<%@hn.each_with_index do |post,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to post.link.title, post.link.href, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
-		</div>
-		<div class="span6">
-			<h2><%=image_tag "gizmodo.jpg"%>  Gizmodo</h2>
-			<div id="posts">
-				<%@gm.items.each_with_index do |item,index|%>
+				<%@cnn_top.items.each_with_index do |item,index|%>
 					<div class="row-fluid">
 						<div class="span1"><i><h6><%=index+1%></h6></i></div>
 						<div class="span11">
@@ -44,9 +31,9 @@
 			</div>
 		</div>
 		<div class="span6">
-			<h2><%=image_tag "engadget.png"%>  Engadget</h2>
+			<h2><%=image_tag "cnn.jpg"%>  CNN Asia</h2>
 			<div id="posts">
-				<%@en.items.each_with_index do |item,index|%>
+				<%@cnn_asia.items.each_with_index do |item,index|%>
 					<div class="row-fluid">
 						<div class="span1"><i><h6><%=index+1%></h6></i></div>
 						<div class="span11">
@@ -57,9 +44,22 @@
 			</div>
 		</div>
 		<div class="span6">
-			<h2><%=image_tag "redmondpie.png"%>  Redmond Pie</h2>
+			<h2><%=image_tag "nyt.png"%>  The New York Times</h2>
 			<div id="posts">
-				<%@rm.items.each_with_index do |item,index|%>
+				<%@nyt.items.each_with_index do |item,index|%>
+					<div class="row-fluid">
+						<div class="span1"><i><h6><%=index+1%></h6></i></div>
+						<div class="span11">
+							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
+						</div>
+					</div>
+				<%end%>	
+			</div>
+		</div>
+		<div class="span6">
+			<h2><%=image_tag "economist.png"%>  The Economist</h2>
+			<div id="posts">
+				<%@ec.items.each_with_index do |item,index|%>
 					<div class="row-fluid">
 						<div class="span1"><i><h6><%=index+1%></h6></i></div>
 						<div class="span11">

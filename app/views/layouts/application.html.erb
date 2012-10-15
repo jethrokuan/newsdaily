@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-	
-	<title>Newsdaily</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+		<title>NewsDaily - <%= yield (:title) %></title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= yield %>
+	</body>
 </html>
 

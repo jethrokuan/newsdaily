@@ -1,6 +1,9 @@
 Newsdaily::Application.routes.draw do
   get "pages/index"
   get "pages/tech"
+  get "pages/world"
+  match "/world" => "pages#world"
+  match "/tech" => "pages#tech"
   root to: "pages#index"
 
   # The priority is based upon order of creation:

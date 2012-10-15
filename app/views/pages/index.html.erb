@@ -1,18 +1,44 @@
+<%title "Index"%>
 <div class="container">
 	<div class="well">
-		<center><h1><i class="icon-book"></i> NewsDaily</h1></center>
+		<center>
+			<h1><i class="icon-book"></i> NewsDaily</h1>
+			<p class="lead">What would you like to read today?</p>
+		</center>
 	</div>
-	<h3>What would you like to read today?</h3>
 	<ul class="thumbnails">
 		<li class="span4">
-			<div class="thumbnail">
-				<center><h2>World News</h2></center>
-			</div>
+			<a href=<%=world_path%>>
+				<div class="thumbnail">
+					<center>
+						<h1><i class="icon-globe"></i> </h1>
+						<h2>World News</h2>
+					</center>
+				</div>
+			</a>
+		</li>
+		<li class="span4">
+			<a href=<%=tech_path%>>
+				<div class="thumbnail">
+					<center>
+						<h1><i class="icon-rss"></i> </h1>
+						<h2>Tech News</h2>
+					</center>
+				</div>
+			</a>
 		</li>
 		<li class="span4">
 			<div class="thumbnail">
-				<center><h2>Tech News</h2></center>
+				<center>
+					<h1><i class="icon-time"></i> </h1>
+					<h2>Coming Soon</h2>
+				</center>
 			</div>
 		</li>
 	</ul>
+	<div class="container">
+		<h5>A feed you'd like included? A particular topic that you want an aggregated feed for? Let me know.</h5>
+		<p><%=link_to "jethrokuan95@gmail.com", "mailto:jethrokuan95@gmail.com"%></p>
+		<p><%=link_to "My Website", "http://jethrokuan.1.ai"%></p>
+	</div>
 </div>
