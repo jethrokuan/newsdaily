@@ -1,5 +1,16 @@
 <%title "Index"%>
 <div class="container">
+	<div class="row-fluid">
+		<div class="span12 alignright">
+			<%if user_signed_in?%>
+				<h5>Signed in as <%=current_user.email%> | <%=link_to "My Bookmarks",bookmarks_path%> | <%=link_to "Sign Out", destroy_user_session_path, method: "DELETE"%></h5>
+			<%else%>
+				<h5><%=link_to "Sign In", new_user_session_path%> or <%=link_to "Sign Up", new_user_registration_path%></h5>
+			<%end%>
+		</div>
+	</div>
+</div>
+<div class="container">
 	<div class="well">
 		<center>
 			<h1><i class="icon-book"></i> NewsDaily</h1>
@@ -37,8 +48,11 @@
 		</li>
 	</ul>
 	<div class="container">
-		<h5>A feed you'd like included? A particular topic that you want an aggregated feed for? Let me know.</h5>
-		<p><%=link_to "jethrokuan95@gmail.com", "mailto:jethrokuan95@gmail.com"%></p>
-		<p><%=link_to "My Website", "http://jethrokuan.1.ai"%></p>
+		<center>
+			<h5>A feed you'd like included? A particular topic that you want an aggregated feed for? Let me know. <%=link_to "jethrokuan95@gmail.com", "mailto:jethrokuan95@gmail.com"%></h5>
+			<h6><%=link_to "My Website", "http://jethrokuan.1.ai"%></h6>
+			<hr>
+			<p>&copy Jethro 2012</p>
+		</center>
 	</div>
 </div>

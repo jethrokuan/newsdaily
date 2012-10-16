@@ -1,4 +1,8 @@
 Newsdaily::Application.routes.draw do
+  resources :bookmarks
+
+  devise_for :users
+
   get "pages/index"
   get "pages/tech"
   get "pages/world"

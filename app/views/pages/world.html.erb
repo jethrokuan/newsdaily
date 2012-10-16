@@ -4,70 +4,45 @@
 		<div class="span1">
 			<h1><a href=<%=root_path%> id="backbutton"><i class="icon-chevron-left"></i></a></h1>
 		</div>
-		<div class="span8">
+		<div class="span6">
 			<h1>World News</h1>
 			<p class="lead">Consolidating the important world news around the world.</p>
 		</div>
-		<div class="span3">
-			<h3>&copy Jethro 2012</h3>
-			<h5><%=link_to "My Website", "http://jethrokuan.1.ai"%></h5>
+		<div class="span5">
+			<%if user_signed_in?%>
+				<h5>Signed in as <%=current_user.email%> | <%=link_to "My Bookmarks",bookmarks_path%> | <%=link_to "Sign Out", destroy_user_session_path, method: "DELETE"%></h5>
+			<%else%>
+				<h5><%=link_to "Sign In", new_user_session_path%> or <%=link_to "Sign Up", new_user_registration_path%></h5>
+			<%end%>
 		</div>
 	</div>
 	
 </div>
 <div class="container" id="content">
+	<div class="container">
+		<%if notice%>
+			<div class="alert alert-success"><%= notice %></div>
+		<%end%>
+		<%if alert%>
+			<div class="alert alert-error"><%= alert %></div>
+		<%end%>
+	</div>
 	<div class="row">
 		<div class="span6">
 			<h2><%=image_tag "cnn.jpg"%>  CNN Top Stories</h2>
-			<div id="posts">
-				<%@cnn_top.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @cnn_top} %>
 		</div>
 		<div class="span6">
 			<h2><%=image_tag "cnn.jpg"%>  CNN Asia</h2>
-			<div id="posts">
-				<%@cnn_asia.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @cnn_asia} %>
 		</div>
 		<div class="span6">
 			<h2><%=image_tag "nyt.png"%>  The New York Times</h2>
-			<div id="posts">
-				<%@nyt.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @nyt} %>
 		</div>
 		<div class="span6">
 			<h2><%=image_tag "economist.png"%>  The Economist</h2>
-			<div id="posts">
-				<%@ec.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @ec} %>
 		</div>
 	</div>
 </div>

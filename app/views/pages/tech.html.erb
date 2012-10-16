@@ -4,27 +4,39 @@
 		<div class="span1">
 			<h1><a href=<%=root_path%> id="backbutton"><i class="icon-chevron-left"></i></a></h1>
 		</div>
-		<div class="span8">
+		<div class="span6">
 			<h1>Tech News</h1>
 			<p class="lead">Consolidating the important tech news around the world.</p>
 		</div>
-		<div class="span3">
-			<h3>&copy Jethro 2012</h3>
-			<h5><%=link_to "My Website", "http://jethrokuan.1.ai"%></h5>
+		<div class="span5">
+			<%if user_signed_in?%>
+				<h5>Signed in as <%=current_user.email%> | <%=link_to "My Bookmarks",bookmarks_path%> | <%=link_to "Sign Out", destroy_user_session_path, method: "DELETE"%></h5>
+			<%else%>
+				<h5><%=link_to "Sign In", new_user_session_path%> or <%=link_to "Sign Up", new_user_registration_path%></h5>
+			<%end%>
 		</div>
 	</div>
-	
 </div>
+
 <div class="container" id="content">
+	<%if notice%>
+		<div class="alert alert-success"><%= notice %></div>
+	<%end%>
+	<%if alert%>
+		<div class="alert alert-error"><%= alert %></div>
+	<%end%>
 	<div class="row">
 		<div class="span6">
-			<h2><%=image_tag "ycombinator.gif"%>  Hackernews</h2>
+			<h2><%=image_tag "ycombinator.gif"%>  Hacker News</h2>
 			<div id="posts">
 				<%@hn.each_with_index do |post,index|%>
 					<div class="row-fluid">
 						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to post.link.title, post.link.href, class: "livepreview"%></h6>
+						<div class="span10">
+							<h6><%=link_to post.link.title, post.link.href%></h6>
+						</div>
+						<div class="span1">
+							<%=link_to "<i class='icon-bookmark'></i>".html_safe ,remote: true, url: {action:"create", controller:"bookmarks", title: post.link.title.to_s, url: post.link.href.to_s}, method: "POST"%>
 						</div>
 					</div>
 				<%end%>	
@@ -32,42 +44,15 @@
 		</div>
 		<div class="span6">
 			<h2><%=image_tag "gizmodo.jpg"%>  Gizmodo</h2>
-			<div id="posts">
-				<%@gm.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @gm} %>
 		</div>
 		<div class="span6">
 			<h2><%=image_tag "engadget.png"%>  Engadget</h2>
-			<div id="posts">
-				<%@en.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @en} %>
 		</div>
 		<div class="span6">
 			<h2><%=image_tag "redmondpie.png"%>  Redmond Pie</h2>
-			<div id="posts">
-				<%@rm.items.each_with_index do |item,index|%>
-					<div class="row-fluid">
-						<div class="span1"><i><h6><%=index+1%></h6></i></div>
-						<div class="span11">
-							<h6><%=link_to item.title, item.link, class: "livepreview"%></h6>
-						</div>
-					</div>
-				<%end%>	
-			</div>
+			<%=render partial: "rss", locals:{rss: @rm} %>
 		</div>
 	</div>
 </div>

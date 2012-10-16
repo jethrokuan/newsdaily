@@ -1,0 +1,52 @@
+<% title "Bookmarks"%>
+<div class="container">
+  <div class="well">
+    <center>
+      <h1><i class="icon-book"></i> NewsDaily</h1>
+      <p class="lead">What would you like to read today?</p>
+    </center>
+  </div>
+  <h4>My Bookmarks</h4>
+  <% @bookmarks.each do |bookmark| %>
+  <div class="row-fluid">
+    <div class="span10">
+      <%= link_to bookmark.title, bookmark.url%>
+    </div>
+    <div class="span2">
+      <%= link_to 'Delete Bookmark', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+  <%end%>
+
+  <h5>Back to reading:</h5>
+    <ul class="thumbnails">
+    <li class="span4">
+      <a href=<%=world_path%>>
+        <div class="thumbnail">
+          <center>
+            <h1><i class="icon-globe"></i> </h1>
+            <h2>World News</h2>
+          </center>
+        </div>
+      </a>
+    </li>
+    <li class="span4">
+      <a href=<%=tech_path%>>
+        <div class="thumbnail">
+          <center>
+            <h1><i class="icon-rss"></i> </h1>
+            <h2>Tech News</h2>
+          </center>
+        </div>
+      </a>
+    </li>
+    <li class="span4">
+      <div class="thumbnail">
+        <center>
+          <h1><i class="icon-time"></i> </h1>
+          <h2>Coming Soon</h2>
+        </center>
+      </div>
+    </li>
+  </ul>
+</div>
