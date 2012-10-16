@@ -6,7 +6,7 @@
 				<li><h6><%=link_to item.title, item.link, class: "livepreview"%></h6></li>
 			</div>
 			<div class="span1">
-				<%=link_to "<i class='icon-bookmark'></i>".html_safe , bookmarks_path(:title=> item.title.to_s, :url=> item.link.to_s), method: "POST"%>
+				<%=link_to "<i class='icon-bookmark'></i>".html_safe , bookmarks_path(:title=> item.title.to_s, :url=> item.link.to_s), method: :post%>
 			</div>
 		</div>
 	<%end%>	

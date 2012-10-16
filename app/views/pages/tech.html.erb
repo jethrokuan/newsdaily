@@ -4,28 +4,14 @@
 		<div class="span1">
 			<h1><a href=<%=root_path%> id="backbutton"><i class="icon-chevron-left"></i></a></h1>
 		</div>
-		<div class="span6">
+		<div class="span11">
 			<h1>Tech News</h1>
 			<p class="lead">Consolidating the important tech news around the world.</p>
-		</div>
-		<div class="span5">
-			<%if user_signed_in?%>
-				<h5>Signed in as <%=current_user.email%> | <%=link_to "My Bookmarks",bookmarks_path%> | <%=link_to "Sign Out", destroy_user_session_path, method: "DELETE"%></h5>
-			<%else%>
-				<h5><%=link_to "Sign In", new_user_session_path%> or <%=link_to "Sign Up", new_user_registration_path%></h5>
-			<%end%>
 		</div>
 	</div>
 </div>
 
-<div class="container" id="content">
-	<%if notice%>
-		<div class="alert alert-success"><%= notice %></div>
-	<%end%>
-	<%if alert%>
-		<div class="alert alert-error"><%= alert %></div>
-	<%end%>
-	<div class="row">
+<div id="content">
 		<div class="span6">
 			<h2><%=image_tag "ycombinator.gif"%>  Hacker News</h2>
 			<div id="posts">
@@ -36,7 +22,7 @@
 							<h6><%=link_to post.link.title, post.link.href%></h6>
 						</div>
 						<div class="span1">
-							<%=link_to "<i class='icon-bookmark'></i>".html_safe ,remote: true, url: {action:"create", controller:"bookmarks", title: post.link.title.to_s, url: post.link.href.to_s}, method: "POST"%>
+							<%=link_to "<i class='icon-bookmark'></i>".html_safe , bookmarks_path(title: post.link.title.to_s, url: post.link.href.to_s), method: "POST"%>
 						</div>
 					</div>
 				<%end%>	
@@ -54,5 +40,4 @@
 			<h2><%=image_tag "redmondpie.png"%>  Redmond Pie</h2>
 			<%=render partial: "rss", locals:{rss: @rm} %>
 		</div>
-	</div>
 </div>

@@ -36,7 +36,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       if @bookmark.save
-        format.html { redirect_to session.delete[:return_to], notice: 'Bookmark was successfully created.' }
+        format.html { redirect_to session[:return_to], notice: 'Bookmark was successfully created.' }
         format.json { render json: @bookmark, status: :created, location: @bookmark }
       else
         format.html { render action: "new" }
