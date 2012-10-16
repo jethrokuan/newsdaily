@@ -36,8 +36,7 @@
 							<h6><%=link_to post.link.title, post.link.href%></h6>
 						</div>
 						<div class="span1">
-							<%=link_to "<i class='icon-bookmark'></i>".html_safe, url: {action:"create", controller:"bookmarks", title: post.link.title.to_s, url: post.link.href.to_s}, method: "POST"%>
-
+							<%=link_to "<i class='icon-bookmark'></i>".html_safe, bookmarks_path(title: post.link.title.to_s, url: post.link.href.to_s), method: :post%>
 						</div>
 					</div>
 				<%end%>	
