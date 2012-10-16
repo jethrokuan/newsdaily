@@ -31,8 +31,6 @@ gem 'ruby-hackernews'
 gem 'devise'
 
 gem 'jquery-rails'
-gem 'pjax_rails'
-gem 'angular-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
